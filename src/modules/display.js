@@ -12,7 +12,7 @@ const display = () => {
     arr = [];
   }
   arr.forEach((item) => {
-      tasklist.innerHTML += item.completed === true ? `<div class="field wide" id=${item.index}>
+    tasklist.innerHTML += item.completed === true ? `<div class="field wide" id=${item.index}>
     <div class="inputcontainer">
       <label for=${item.index}><input type="checkbox" class="task" checked><div class="tasktext ${item.completed}">${item.description}</div></label>
     </div>
