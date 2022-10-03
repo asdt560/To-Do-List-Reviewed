@@ -10,9 +10,11 @@ body {
   justify-content: center;
 }
 
-h1 {
+.wide {
   width: 100%;
-  font-size: 16px;
+}
+
+h1 {
   align-self: flex-start;
   font-weight: 500;
   padding: 1em;
@@ -33,7 +35,6 @@ h1 {
 .field {
   display: flex;
   justify-content: space-between;
-  width: 100%;
   border-bottom: 1px solid lightgrey;
 }
 
@@ -45,7 +46,6 @@ h1 {
 
 input {
   border: none;
-  width: 100%;
   padding: 1em;
 }
 
@@ -84,13 +84,11 @@ button {
 }
 
 #clear {
-  width: 100%;
   padding: 1em;
   background-color: antiquewhite;
 }
 
 #dynamiccontainer {
-  width: 100%;
   overflow-y: auto;
 }
 
