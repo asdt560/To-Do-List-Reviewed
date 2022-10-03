@@ -1,0 +1,110 @@
+* {
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wide {
+  width: 100%;
+}
+
+h1 {
+  align-self: flex-start;
+  font-weight: 500;
+  padding: 1em;
+  border-bottom: 1px solid lightgrey;
+  margin: 0;
+}
+
+#listcontainer {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 3px 3px 3px lightgrey, -3px 3px 3px lightgrey, 3px 3px 3px lightgrey;
+  width: 60%;
+  align-items: center;
+  max-height: 95vh;
+}
+
+.field {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgrey;
+}
+
+.inputcontainer {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+}
+
+input {
+  border: none;
+  padding: 1em;
+}
+
+label {
+  display: flex;
+}
+
+.tasktext {
+  margin: 0;
+}
+
+.task {
+  margin-right: 1em;
+  width: auto;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+#taskenter {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  color: grey;
+  padding: 1em;
+}
+
+.listbutton {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  color: grey;
+  padding: 1em;
+}
+
+#clear {
+  padding: 1em;
+  background-color: antiquewhite;
+}
+
+#dynamiccontainer {
+  overflow-y: auto;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.editable {
+  background-color: rgb(255, 255, 100);
+}
+
+.true {
+  text-decoration: line-through;
+}
+
+/* stylelint-disable-next-line selector-type-no-unknown */
+ion-icon {
+  pointer-events: none;
+}
