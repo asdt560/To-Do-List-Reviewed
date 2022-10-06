@@ -2,9 +2,13 @@
  * @jest-environment jsdom
  */
 
+import changebutton from '../src/modules/changebutton.js';
+
 import { TaskList } from '../src/modules/class.js';
 
 import display from '../src/modules/display.js';
+
+const taskList = new TaskList();
 
 describe('add and remove tests', () => {
   it('add item to the DOM', () => {
@@ -32,14 +36,12 @@ describe('add and remove tests', () => {
   });
 
   it('remove item from the container', () => {
-    const taskList = new TaskList();
     taskList.add('test');
     taskList.remove(0);
     expect(taskList.container.length).toBe(0);
   });
 
   it('add item to the array', () => {
-    const taskList = new TaskList();
     taskList.add('test');
     expect(taskList.container[0].description).toBe('test');
   });
@@ -139,5 +141,19 @@ describe('add and remove tests', () => {
     // Edit the task
     task.description = 'test2';
     expect(task.description).toBe('test2');
+  });
+
+  it('changebutton test', () => {
+    const button = document.querySelector('#button0');
+    changebutton(button);
+    expect(button.title).toEqual('Delete Task');
+    const icon = button.firstChild;
+    expect(icon.getAttribute('name')).toEqual('trash-outline');
+  });
+
+  it('complete test', () => {
+    const target = document.querySelector('.task');
+    taskList.complete(target.parentNode.parentNode.parentNode.id);
+    expect(taskList.container[target.parentNode.parentNode.parentNode.id].completed).toBe(true);
   });
 });
