@@ -4,6 +4,8 @@
 
 import { TaskList } from '../src/modules/class.js';
 
+import display from '../src/modules/display.js';
+
 describe('add and remove tests', () => {
   it('add item to the DOM', () => {
     const divTask = document.createElement('div');
@@ -40,6 +42,18 @@ describe('add and remove tests', () => {
     const taskList = new TaskList();
     taskList.add('test');
     expect(taskList.container[0].description).toBe('test');
+  });
+
+  it('display content of TaskList in HTML', () => {
+    document.body.innerHTML = '<div id="dynamiccontainer" class="wide"></div>';
+    const tasklist = document.querySelector('#dynamiccontainer');
+    display();
+    expect(tasklist.innerHTML).toEqual(`<div class="field" id="0">
+    <div class="inputcontainer">
+      <label for="0"><input type="checkbox" class="task"><div class="tasktext false">test</div></label>
+    </div>
+    <button class="listbutton" id="button0" type="button" title="Change Task"><ion-icon name="ellipsis-vertical"></ion-icon></button>
+  </div>`);
   });
 
   it('remove item from the DOM', () => {
