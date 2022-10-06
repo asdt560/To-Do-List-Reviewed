@@ -101,4 +101,43 @@ describe('add and remove tests', () => {
     document.body.appendChild(divTask2);
     expect(document.querySelector('#field-0')).toBe(null);
   });
+
+  it('edit the task description on the DOM', () => {
+    const divTask = document.createElement('div');
+    divTask.classList.add('field');
+    divTask.id = 'field-0';
+    const divInput = document.createElement('div');
+    divInput.classList.add('inputcontainer');
+    const label = document.createElement('label');
+    label.htmlFor = 'field-0';
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.classList.add('task');
+    const divText = document.createElement('div');
+    divText.classList.add('tasktext');
+    divText.textContent = 'test';
+    label.appendChild(input);
+    label.appendChild(divText);
+    divInput.appendChild(label);
+    // Append the input container to the task div
+    divTask.appendChild(divInput);
+    // Append the div to the task list
+    document.body.appendChild(divTask);
+    divText.textContent = 'test2';
+    expect(divText.textContent).toBe('test2');
+  });
+
+  it('edit the task description on the array', () => {
+    const taskList = new TaskList();
+    taskList.add('test');
+    // Get the target of the event
+    const target = document.querySelector('.tasktext');
+    // Get the index of the task
+    const index = target.parentElement.parentElement.parentElement.id;
+    // Get the task
+    const task = taskList.container[index];
+    // Edit the task
+    task.description = 'test2';
+    expect(task.description).toBe('test2');
+  });
 });
