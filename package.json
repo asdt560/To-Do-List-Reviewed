@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --env=jsdom",
     "build": "webpack",
-    "watch": "webpack --watch",
+    "watch": "jest --watch",
     "start": "webpack serve --open"
   },
   "repository": {
