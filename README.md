@@ -40,6 +40,19 @@ To get a local copy up and running follow these simple example steps. (NPM)
 - GitHub: [@githubhandle](https://github.com/asdt560)
 - Twitter: [@twitterhandle](https://twitter.com/JustoRago)
 - LinkedIn: [LinkedIn]( www.linkedin.com/in/justo-rago-0714b5208)
+  
+👤 **Didier Ganthier**
+
+- GitHub: [@githubhandle](https://github.com/didierganthier)
+- Twitter: [@twitterhandle](https://twitter.com/didierganthier_)
+- LinkedIn: [LinkedIn]( www.linkedin.com/in/didierganthier)
+
+👤 **Kalkidan Daniel**
+
+- GitHub: [@kal2944](https://github.com/kal2944)
+- Twitter: [@Kalkida01088197](https://twitter.com/Kalkida01088197)
+- LinkedIn: [@kalkidan Daniel](https://www.linkedin.com/in/kalkidan-daniel-b2a204238/)
+
 
 ## 🤝 Contributing
 
