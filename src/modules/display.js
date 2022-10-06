@@ -3,9 +3,8 @@ import complete from './complete.js';
 // eslint-disable-next-line import/no-cycle
 import targeter from './targeter.js';
 
-const tasklist = document.querySelector('#dynamiccontainer');
-
 const display = () => {
+  const tasklist = document.querySelector('#dynamiccontainer');
   tasklist.innerHTML = '';
   let arr = JSON.parse(window.localStorage.getItem('tasklist'));
   if (arr === null) {

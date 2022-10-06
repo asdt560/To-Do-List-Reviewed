@@ -2,7 +2,13 @@
  * @jest-environment jsdom
  */
 
+import changebutton from '../src/modules/changebutton.js';
+
 import { TaskList } from '../src/modules/class.js';
+
+import display from '../src/modules/display.js';
+
+const taskList = new TaskList();
 
 describe('add and remove tests', () => {
   it('add item to the DOM', () => {
@@ -30,16 +36,26 @@ describe('add and remove tests', () => {
   });
 
   it('remove item from the container', () => {
-    const taskList = new TaskList();
     taskList.add('test');
     taskList.remove(0);
     expect(taskList.container.length).toBe(0);
   });
 
   it('add item to the array', () => {
-    const taskList = new TaskList();
     taskList.add('test');
     expect(taskList.container[0].description).toBe('test');
+  });
+
+  it('display content of TaskList in HTML', () => {
+    document.body.innerHTML = '<div id="dynamiccontainer" class="wide"></div>';
+    const tasklist = document.querySelector('#dynamiccontainer');
+    display();
+    expect(tasklist.innerHTML).toEqual(`<div class="field" id="0">
+    <div class="inputcontainer">
+      <label for="0"><input type="checkbox" class="task"><div class="tasktext false">test</div></label>
+    </div>
+    <button class="listbutton" id="button0" type="button" title="Change Task"><ion-icon name="ellipsis-vertical"></ion-icon></button>
+  </div>`);
   });
 
   it('remove item from the DOM', () => {
@@ -86,5 +102,63 @@ describe('add and remove tests', () => {
     // Append the div to the task list
     document.body.appendChild(divTask2);
     expect(document.querySelector('#field-0')).toBe(null);
+  });
+
+  it('edit the task description on the DOM', () => {
+    const divTask = document.createElement('div');
+    divTask.classList.add('field');
+    divTask.id = 'field-0';
+    const divInput = document.createElement('div');
+    divInput.classList.add('inputcontainer');
+    const label = document.createElement('label');
+    label.htmlFor = 'field-0';
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.classList.add('task');
+    const divText = document.createElement('div');
+    divText.classList.add('tasktext');
+    divText.textContent = 'test';
+    label.appendChild(input);
+    label.appendChild(divText);
+    divInput.appendChild(label);
+    // Append the input container to the task div
+    divTask.appendChild(divInput);
+    // Append the div to the task list
+    document.body.appendChild(divTask);
+    divText.textContent = 'test2';
+    expect(divText.textContent).toBe('test2');
+  });
+
+  it('edit the task description on the array', () => {
+    const taskList = new TaskList();
+    taskList.add('test');
+    // Get the target of the event
+    const target = document.querySelector('.tasktext');
+    // Get the index of the task
+    const index = target.parentElement.parentElement.parentElement.id;
+    // Get the task
+    const task = taskList.container[index];
+    // Edit the task
+    task.description = 'test2';
+    expect(task.description).toBe('test2');
+  });
+
+  it('changebutton test', () => {
+    const button = document.querySelector('#button0');
+    changebutton(button);
+    expect(button.title).toEqual('Delete Task');
+    const icon = button.firstChild;
+    expect(icon.getAttribute('name')).toEqual('trash-outline');
+  });
+
+  it('complete test', () => {
+    const target = document.querySelector('.task');
+    taskList.complete(target.parentNode.parentNode.parentNode.id);
+    expect(taskList.container[target.parentNode.parentNode.parentNode.id].completed).toBe(true);
+  });
+
+  it('clearer test', () => {
+    taskList.clearer();
+    expect(taskList.container.length).toBe(2);
   });
 });
