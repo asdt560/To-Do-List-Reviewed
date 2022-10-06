@@ -29,12 +29,17 @@ describe('add and remove tests', () => {
     expect(document.querySelector('.field').id).toBe('0');
   });
 
-  it('remove item from container', () => {
+  it('remove item from the container', () => {
     const taskList = new TaskList();
     taskList.add('test');
-    taskList.add('test2');
     taskList.remove(0);
-    expect(taskList.container.length).toBe(1);
+    expect(taskList.container.length).toBe(0);
+  });
+
+  it('add item to the array', () => {
+    const taskList = new TaskList();
+    taskList.add('test');
+    expect(taskList.container[0].description).toBe('test');
   });
 
   it('remove item from the DOM', () => {
