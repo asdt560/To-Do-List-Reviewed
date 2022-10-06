@@ -5,3 +5,5 @@ dist/
 .history
 
 .cache
+
+coverage

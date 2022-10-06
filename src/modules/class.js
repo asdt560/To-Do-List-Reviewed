@@ -24,6 +24,7 @@ export class TaskList {
     this.index += 1;
     window.localStorage.setItem('tasknumber', JSON.stringify(this.index));
     window.localStorage.setItem('tasklist', JSON.stringify(this.container));
+    return newTask;
   }
 
   remove(id) {
