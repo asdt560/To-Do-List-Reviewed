@@ -156,4 +156,11 @@ describe('add and remove tests', () => {
     taskList.complete(target.parentNode.parentNode.parentNode.id);
     expect(taskList.container[target.parentNode.parentNode.parentNode.id].completed).toBe(true);
   });
+  
+  it('clearer test', () => {
+    taskList.clearer();
+    expect(taskList.container.length).toBe(2);
+  });
+
+
 });
